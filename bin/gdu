@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var getDownloadURL = require('../lib/gdu');
+var getDownloadURL = require('../lib/get');
 var isDebug = false;
 
 console.debug = function(args) {
@@ -21,6 +21,7 @@ console.debug(' args     : %j', program.args);
 console.debug(' selector : %s', program.selector);
 if (program.xpath) console.debug(' xpath : %s', program.xpath);
 
-getDownloadURL('http://moviejie.com/link/ZwLmZwL1AwVhqUDmZwR2AwN4YwVjYwR5ZmD4At==/', program.selector).then(function(result) {
+// getDownloadURL('http://moviejie.com/link/ZwLmZwL1AwVhqUDmZwR2AwN4YwVjYwR5ZmD4At==/', program.selector).then(function(result) {
+getDownloadURL('http://moviejie.com/movie/334f5f/', 'td.movie_name:contains(HDTVrip)').then(function(result) {
   console.log(result)
 });

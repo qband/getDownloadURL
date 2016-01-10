@@ -9,6 +9,7 @@ a cli tool that can get real download urls step by step
   - query language
   - dom element
     - selector/querySelectorAll - [1](https://stackoverflow.com/questions/190253/jquery-selector-regular-expressions) - [2](https://stackoverflow.com/questions/9309763/jquery-selector-contains-use-regular-expressions)
+      - selector chains
     - xpath - [1](https://stackoverflow.com/questions/10596417/is-there-a-way-to-get-element-by-xpath-using-javascript-in-selenium-webdriver) - [2](https://stackoverflow.com/questions/2994198/xpath-to-return-only-elements-containing-the-text-and-not-its-parents)
   - text processing
 
