@@ -1,0 +1,20 @@
+{
+  "name": "getdownloadurl",
+  "version": "0.0.1",
+  "description": "a cli tool that can get real download urls step by step",
+  "main": "lib/gdu",
+  "scripts": {
+    "start": "casperjs main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "qband",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "scraperjs": "^1.2.0",
+    "winston": "^2.1.1"
+  },
+  "bin": {
+    "gdu": "./bin/gdu"
+  }
+}
