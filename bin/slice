@@ -2,29 +2,33 @@
 
 var program = require('commander');
 var getDownloadURL = require('../lib/get');
-var isDebug = false;
 
-console.debug = function(args) {
-  if (isDebug) {
-    console.log(args);
-  }
-}
+console.debug = function() {};
 program
   .version('0.0.1')
   .usage('is a cli tool to extract data from web page')
   .option('-u, --url [url]', 'set which url to grab', 'http://moviejie.com/movie/334f5f/')
-  .option('-x, --xpath', 'use xpath instead of selector')
+  .option('-o, --output [attr@xxx|text|html]', 'set output type', 'html')
+  .option('-x, --xpath [@TODO]', 'use xpath instead of selector')
   .option('-v, --verbose', 'verbose')
   .parse(process.argv);
 
-if (program.verbose) isDebug = true;
-console.debug(' args     : %j', program.args);
-console.debug(' selector : %s', program.selector);
-if (program.xpath) console.debug(' xpath : %s', program.xpath);
+if (program.verbose) console.debug = console.log;
+
+console.debug('args  : %j', program.args);
+console.debug('url   : %s', program.url);
+console.debug('output: %s', program.output);
+if (program.xpath) console.debug('xpath : %s', program.xpath);
 
 // program.args.push('#link_text_span');
-program.args.push('td.movie_name:contains(HDTVrip)');
+// program.args.push('td.movie_name:contains(HDTVrip)');
+// program.args.push('tr:has(td.movie_name:contains(HDTVrip))');
+// program.args.push(':last-child:first-child');
 
-getDownloadURL(program.url, program.args.pop()).then(function(result) {
-  console.log(result)
-});
+try {
+  getDownloadURL(program.url, program.args, program.output, program.verbose).then(function(result) {
+    console.log(result)
+  });
+} catch (e) {
+  console.error(e);
+}

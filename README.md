@@ -2,8 +2,13 @@
 
 a cli tool to extract data from web page
 
-## real world example
+## feature
+- selector chains to get specific tag element
+- extractor chains to get accurate data
 
+## real world example
+- bin/slice -u "http://moviejie.com/movie/334f5f/" -o attr@href "tr:has(td.movie_name:contains(HDTVrip))" ":last-child:first-child"
+- bin/slice -u "http://moviejie.com/link/ZwH5ZGx4BGphqUDmBQZ2BGp0YwV0YwV3BQZ=/" -o text "#link_text_span"
 ## reference
 - how to get useful data
   - query language
@@ -12,6 +17,7 @@ a cli tool to extract data from web page
       - selector chains
     - xpath - [1](https://stackoverflow.com/questions/10596417/is-there-a-way-to-get-element-by-xpath-using-javascript-in-selenium-webdriver) - [2](https://stackoverflow.com/questions/2994198/xpath-to-return-only-elements-containing-the-text-and-not-its-parents)
   - text processing
+    - regex
 
 - impl in mind
   - headless browser
@@ -20,6 +26,7 @@ a cli tool to extract data from web page
   - browser plugin
 
 - impl in real world
+  - x-ray
   - Scrapy
   - zombie
   - phantomjs
