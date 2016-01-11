@@ -7,8 +7,13 @@ a cli tool to extract data from web page
 - extractor chains to get accurate data
 
 ## real world example
-- bin/slice -u "http://moviejie.com/movie/334f5f/" -o attr@href "tr:has(td.movie_name:contains(HDTVrip))" ":last-child:first-child"
-- bin/slice -u "http://moviejie.com/link/ZwH5ZGx4BGphqUDmBQZ2BGp0YwV0YwV3BQZ=/" -o text "#link_text_span"
+bin/slice -u "http://moviejie.com/movie/334f5f/" \
+  -o attr@href \
+  "tr:has(td.movie_name:contains(HDTVrip))" \
+  ":last-child:first-child" \
+  | sed 's~^~http://moviejie.com~' \
+  | xargs -I{} bin/slice -u "{}" -o text "#link_text_span"
+
 ## reference
 - how to get useful data
   - query language

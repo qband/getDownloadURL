@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var getDownloadURL = require('../lib/get');
+var get = require('../lib/get');
 
 console.debug = function() {};
 program
@@ -20,13 +20,8 @@ console.debug('url   : %s', program.url);
 console.debug('output: %s', program.output);
 if (program.xpath) console.debug('xpath : %s', program.xpath);
 
-// program.args.push('#link_text_span');
-// program.args.push('td.movie_name:contains(HDTVrip)');
-// program.args.push('tr:has(td.movie_name:contains(HDTVrip))');
-// program.args.push(':last-child:first-child');
-
 try {
-  getDownloadURL(program.url, program.args, program.output, program.verbose).then(function(result) {
+  get(program.url, program.args, program.output, program.verbose).then(function(result) {
     console.log(result)
   });
 } catch (e) {
