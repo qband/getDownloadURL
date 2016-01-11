@@ -7,9 +7,9 @@ a cli tool to extract data from web page
 - extractor chains to get accurate data
 
 ## real world example
-bin/slice -u "http://moviejie.com/movie/334f5f/" \
+bin/slice -u "http://moviejie.com/movie/fc2aaa/" \
   -o attr@href \
-  "tr:has(td.movie_name:contains(HDTVrip))" \
+  "tr:has(td.movie_name:contains(中英字幕.WEB-HR.AAC.1024X576.x264.mp4))" \
   ":last-child:first-child" \
   | sed 's~^~http://moviejie.com~' \
   | xargs -I{} bin/slice -u "{}" -o text "#link_text_span"
