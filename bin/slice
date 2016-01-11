@@ -11,8 +11,9 @@ console.debug = function(args) {
 }
 program
   .version('0.0.1')
-  .option('-s, --selector [selector]', 'set selector to match html element you want', '#link_text_span')
-  .option('-x, --xpath [xpath]', 'set xpath to match html element you want')
+  .usage('is a cli tool to extract data from web page')
+  .option('-u, --url [url]', 'set which url to grab', 'http://moviejie.com/movie/334f5f/')
+  .option('-x, --xpath', 'use xpath instead of selector')
   .option('-v, --verbose', 'verbose')
   .parse(process.argv);
 
@@ -21,7 +22,9 @@ console.debug(' args     : %j', program.args);
 console.debug(' selector : %s', program.selector);
 if (program.xpath) console.debug(' xpath : %s', program.xpath);
 
-// getDownloadURL('http://moviejie.com/link/ZwLmZwL1AwVhqUDmZwR2AwN4YwVjYwR5ZmD4At==/', program.selector).then(function(result) {
-getDownloadURL('http://moviejie.com/movie/334f5f/', 'td.movie_name:contains(HDTVrip)').then(function(result) {
+// program.args.push('#link_text_span');
+program.args.push('td.movie_name:contains(HDTVrip)');
+
+getDownloadURL(program.url, program.args.pop()).then(function(result) {
   console.log(result)
 });

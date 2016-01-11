@@ -1,6 +1,6 @@
-# getDownloadURL
+# slice the web page
 
-a cli tool that can get real download urls step by step
+a cli tool to extract data from web page
 
 ## real world example
 
