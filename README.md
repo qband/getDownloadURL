@@ -4,22 +4,22 @@ a cli tool to extract data from web page
 
 ## feature
 - selector chains to get specific tag element
-- extractor chains to get accurate data
+- @TODO extractor chains to get accurate data
 
 ## real world example
-bin/slice -u "http://moviejie.com/movie/fc2aaa/" \
-  -o attr@href \
-  "tr:has(td.movie_name:contains(中英字幕.WEB-HR.AAC.1024X576.x264.mp4))" \
-  ":last-child:first-child" \
-  | sed 's~^~http://moviejie.com~' \
-  | xargs -I{} bin/slice -u "{}" -o text "#link_text_span"
+    bin/slice -u "http://moviejie.com/movie/fc2aaa/" \
+      -o attr@href \
+      "tr:has(td.movie_name:contains(中英字幕.WEB-HR.AAC.1024X576.x264.mp4))" \
+      ":last-child:first-child" \
+      | sed 's~^~http://moviejie.com~' \
+      | xargs -I{} bin/slice -u "{}" -o text "#link_text_span"
 
 ## reference
 - how to get useful data
   - query language
   - dom element
     - selector/querySelectorAll - [1](https://stackoverflow.com/questions/190253/jquery-selector-regular-expressions) - [2](https://stackoverflow.com/questions/9309763/jquery-selector-contains-use-regular-expressions)
-      - selector chains
+      - selector chains - [1](https://github.com/ded/qwery) - [2](https://github.com/rvagg/traversty)
     - xpath - [1](https://stackoverflow.com/questions/10596417/is-there-a-way-to-get-element-by-xpath-using-javascript-in-selenium-webdriver) - [2](https://stackoverflow.com/questions/2994198/xpath-to-return-only-elements-containing-the-text-and-not-its-parents)
   - text processing
     - regex
